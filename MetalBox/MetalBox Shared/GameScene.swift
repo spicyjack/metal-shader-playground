@@ -20,9 +20,10 @@ class GameScene: SCNScene {
         let lightNode = SCNNode()
         let directLight = SCNLight()
         
-        camera.xFov = 60
-        camera.yFov = 60
-        
+//        camera.xFov = 60
+//        camera.yFov = 60
+        camera.fieldOfView = 60
+
         ambientLight.type = SCNLight.LightType.ambient
         let ambiTint: CGFloat = 0.45
         ambientLight.color = SCNColor(red: ambiTint, green: ambiTint, blue: ambiTint, alpha: 1.0)
