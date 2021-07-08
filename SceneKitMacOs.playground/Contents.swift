@@ -15,8 +15,9 @@ class GameScene: SCNScene {
         let lightNode = SCNNode()
         let directLight = SCNLight()
         
-        camera.xFov = 60
-        camera.yFov = 60
+//        camera.xFov = 60
+//        camera.yFov = 60
+        camera.fieldOfView = 60
         
         ambientLight.type = SCNLight.LightType.ambient
         let ambiTint: CGFloat = 0.45
@@ -84,7 +85,7 @@ class GameScene: SCNScene {
         let spin = CABasicAnimation(keyPath: "rotation")
         // Use from-to to explicitly make a full rotation around z
         spin.fromValue = SCNVector4(x: 0, y: 0, z: 1, w: 0)
-        spin.toValue = SCNVector4(x: 0.3, y: 1, z: 1, w: CGFloat(2 * M_PI))
+        spin.toValue = SCNVector4(x: 0.3, y: 1, z: 1, w: CGFloat(2 * Double.pi))
         spin.duration = 3
         spin.repeatCount = .infinity
         object.addAnimation(spin, forKey: "spin around")
@@ -116,14 +117,14 @@ let scene = GameScene()
 // Present the scene
 sceneView.scene = scene
 
-if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
-    if let dict = NSDictionary(contentsOfFile: path)  {
-        let dict2 = dict as! [String : AnyObject]
-        let technique = SCNTechnique(dictionary: dict2)
-        // Gives stutter
-//        sceneView.technique = technique
-    }
-}
+//if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
+//    if let dict = NSDictionary(contentsOfFile: path)  {
+//        let dict2 = dict as! [String : AnyObject]
+//        let technique = SCNTechnique(dictionary: dict2)
+//        // Gives stutter
+////        sceneView.technique = technique
+//    }
+//}
 
 
 PlaygroundSupport.PlaygroundPage.current.liveView = sceneView
